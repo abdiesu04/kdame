@@ -25,8 +25,7 @@ const ProductCard = ({ id, name, price, image, category }: ProductCardProps) => 
         name,
         price,
         image,
-        quantity: 1,
-        category
+        quantity: 1
       },
     });
   };
