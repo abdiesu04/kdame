@@ -8,8 +8,26 @@ import Link from 'next/link';
 import ProductCard from '@/components/product/ProductCard';
 import { useCart } from '@/context/CartContext';
 
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  rating: number;
+  reviews: number;
+  images: string[];
+  sizes: string[];
+  colors: string[];
+  features: string[];
+  category: string;
+}
+
+interface ProductsMap {
+  [key: number]: Product;
+}
+
 // Mock data - in a real app, this would come from an API
-const products = {
+const products: ProductsMap = {
   1: {
     id: 1,
     name: 'Traditional Ethiopian Coffee Set',
@@ -300,14 +318,14 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
   if (!product) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-16 text-center mt-24">
+      <div className="max-w-2xl mx-auto px-4 py-16 text-center">
         <h1 className="text-2xl font-bold mb-4">Product Not Found</h1>
         <p className="text-gray-600 mb-8">The product you're looking for doesn't exist.</p>
         <Link
           href="/categories"
-          className="inline-block bg-yellow-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-yellow-700 transition-colors"
+          className="inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors"
         >
-          Back to Products
+          Browse Categories
         </Link>
       </div>
     );
